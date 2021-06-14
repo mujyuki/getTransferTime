@@ -40,7 +40,7 @@ if __name__ == '__main__':
 		for row in reader:
 			from_ = row[3]
 			pref = row[1]
-			if from_ == 'station_name' or from_ == '大手町' or from_=='多摩センター':
+			if from_ == 'station_name' or from_ == '大手町' or from_ == '多摩センター':
 				continue
 			timeOote = getTimeTrans(from_, '大手町')
 			timeTama = getTimeTrans(from_, '多摩センター')
