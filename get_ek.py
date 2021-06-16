@@ -4,7 +4,6 @@ import csv
 import re
 
 pref_list = ['tokyo', 'kanagawa', 'chiba', 'saitama']
-# line_list = ['en_keiosen', 'en_odakyusen'] #getEnsenNameにより不要
 
 def getEnsenName(pref):
 	load_url = "https://suumo.jp/chintai/" + pref + "/ensen/"
@@ -22,11 +21,7 @@ for pref in pref_list:
 		html = requests.get(load_url)
 		soup = BeautifulSoup(html.content, "html.parser")
 		print(load_url)
-		resultset = soup.find_all('input', attrs={ 'name': 'ek' })
-
-		# rn必要なし
-		# rn = soup.find('input', attrs={ 'name': 'rn' })
-		# print(rn['value'])
+		resultset = soup.find_all('input', attrs={ 'name': 'ek', 'class': 'js-checkSingle js-checkEkiError js-fr-checkSingle' })
 
 		with open('ek_test_all.csv', 'a') as f:
 			writer = csv.writer(f)
